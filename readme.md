@@ -1,0 +1,2 @@
+#This template aims to demonstrate the use of the lcoud init script in Azure without the custom script agent
+#it uses the custom data parameter in the vm resource and the associated data source in terraform
