@@ -43,6 +43,25 @@ module "AllowHTTPFromInternetFEIn" {
   NSGRuleDestinationAddressPrefix = "${lookup(var.SubnetAddressRange, 0)}"
 }
 
+module "AllowRDPFromInternetFEIn" {
+  #Module source
+  #source = "./Modules/08 NSGRule"
+  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//08 NSGRule"
+
+  #Module variable
+  RGName                          = "${module.ResourceGroup.Name}"
+  NSGReference                    = "${module.NSG_FE_Subnet.Name}"
+  NSGRuleName                     = "AllowRDPFromInternetFEIn"
+  NSGRulePriority                 = 103
+  NSGRuleDirection                = "Inbound"
+  NSGRuleAccess                   = "Allow"
+  NSGRuleProtocol                 = "Tcp"
+  NSGRuleSourcePortRange          = "*"
+  NSGRuleDestinationPortRange     = 3389
+  NSGRuleSourceAddressPrefix      = "Internet"
+  NSGRuleDestinationAddressPrefix = "${lookup(var.SubnetAddressRange, 0)}"
+}
+
 #FE public IP Creation
 
 module "CloudInitUbuntuIP" {
@@ -119,7 +138,7 @@ module "DataDisks_CloudInitUbuntu" {
 module "VMs_CloudInitUbuntu" {
   #module source
 
-  source = "./Modules/14.2 LinuxVMWithCountwithCustomData"
+  source = "./Modules/01 LinuxVMWithCountwithCustomData"
 
   #Module variables
 

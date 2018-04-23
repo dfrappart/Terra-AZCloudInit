@@ -33,6 +33,25 @@ variable "EnvironmentUsageTag" {
   type = "string"
 }
 
+variable "AgentPublisher" {
+  type    = "string"
+  default = "Microsoft.Azure.Extensions" #for Linux custom extension
+
+  #default = "microsoft.compute" #For Windows custom extension
+}
+
+variable "AgentType" {
+  type    = "string"
+  default = "CustomScript" #default value for Linux Agent
+
+  #default = "customscriptextension" #Default value for Windos Agent
+}
+
+variable "Agentversion" {
+  type    = "string"
+  default = "2.0"
+}
+
 #Variable passing the string rendered template to the settings parameter
 variable "SettingsTemplatePath" {
   type = "string"
@@ -50,20 +69,20 @@ resource "azurerm_virtual_machine_extension" "Terra-CustomScriptLinuxAgent" {
   location             = "${var.AgentLocation}"
   resource_group_name  = "${var.AgentRG}"
   virtual_machine_name = "${element(var.VMName,count.index)}"
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
+  publisher            = "${var.AgentPublisher}"
+  type                 = "${var.AgentType}"
+  type_handler_version = "${var.Agentversion}"
 
   settings = "${data.template_file.customscripttemplate.rendered}"
 
   /*
-                  settings = <<SETTINGS
-                        {   
-                        
-                                "commandToExecute": "yum install -y epel-release nginx > /dev/null"
-                        }
-                SETTINGS
-                */
+                        settings = <<SETTINGS
+                              {   
+                              
+                                      "commandToExecute": "yum install -y epel-release nginx > /dev/null"
+                              }
+                      SETTINGS
+                      */
   tags {
     environment = "${var.EnvironmentTag}"
     usage       = "${var.EnvironmentUsageTag}"

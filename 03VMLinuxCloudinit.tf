@@ -147,7 +147,7 @@ module "VMs_CloudInit" {
 
 module "CustomExtensionLinuxForCloudInit" {
   #Module location
-  source = "./Modules/24 CustomLinuxExtensionScriptwithtpl"
+  source = "./Modules/03 CustomLinuxExtensionScriptwithtpl"
 
   #Module variables
 
