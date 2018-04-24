@@ -87,7 +87,7 @@ module "VMs_CloudInitWin" {
   VMLocation          = "${var.AzureRegion}"
   VMRG                = "${module.ResourceGroup.Name}"
   VMNICid             = ["${module.NICs_CloudInitWin.Ids}"]
-  VMSize              = "${lookup(var.VMSize, 0)}"
+  VMSize              = "${lookup(var.VMSize, 5)}"
   ASID                = "${module.AS_CloudInitWin.Id}"
   VMStorageTier       = "${lookup(var.Manageddiskstoragetier, 0)}"
   VMAdminName         = "${var.VMAdminName}"
@@ -118,7 +118,7 @@ module "CustomExtensionWinForCloudInit" {
   VMName               = ["${module.VMs_CloudInitWin.Name}"]
   EnvironmentTag       = "${var.EnvironmentTag}"
   EnvironmentUsageTag  = "${var.EnvironmentUsageTag}"
-  AgentPublisher       = "Microsoft.Azure.Extensions"
+  AgentPublisher       = "microsoft.compute"
   AgentType            = "customscriptextension"
   Agentversion         = "1.9"
   SettingsTemplatePath = "./Templates/CloudInitwin.tpl"

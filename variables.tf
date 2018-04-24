@@ -70,6 +70,7 @@ variable "VMSize" {
     "2" = "Standard_F4S"
     "3" = "Standard_F8S"
     "4" = "Standard_B1ms"
+    "5" = "Standard_B2s"
   }
 }
 

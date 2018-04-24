@@ -128,7 +128,7 @@ variable "CloudinitscriptPath" {
 }
 
 #VM Creation
-
+/*
 data "template_file" "cloudconfig" {
   #template = "${file("./script.sh")}"
   template = "${file("${path.root}${var.CloudinitscriptPath}")}"
@@ -143,6 +143,8 @@ data "template_cloudinit_config" "config" {
     content = "${data.template_file.cloudconfig.rendered}"
   }
 }
+
+*/
 
 resource "azurerm_virtual_machine" "TerraVMwithCount" {
   count                 = "${var.VMCount}"
@@ -188,7 +190,7 @@ resource "azurerm_virtual_machine" "TerraVMwithCount" {
     computer_name  = "${var.VMName}${count.index+1}"
     admin_username = "${var.VMAdminName}"
     admin_password = "${var.VMAdminPassword}"
-    custom_data    = "${data.template_cloudinit_config.config.rendered}"
+    custom_data    = "${file("${path.root}${var.CloudinitscriptPath}")}"
   }
 
   os_profile_windows_config {
@@ -214,13 +216,14 @@ resource "azurerm_virtual_machine_extension" "Terra-BGInfoAgent" {
   type                 = "BGInfo"
   type_handler_version = "2.1"
 
-  settings = <<SETTINGS
-        {   
-        
-        "commandToExecute": ""
-        }
-SETTINGS
-
+  /*
+    settings = <<SETTINGS
+          {   
+          
+          "commandToExecute": ""
+          }
+  SETTINGS
+  */
   tags {
     environment = "${var.EnvironmentTag}"
     usage       = "${var.EnvironmentUsageTag}"
