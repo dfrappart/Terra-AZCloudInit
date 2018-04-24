@@ -1,2 +1,1 @@
-#This template aims to demonstrate the use of the lcoud init script in Azure without the custom script agent
-#it uses the custom data parameter in the vm resource and the associated data source in terraform
+#This config is a playground for custom script extension and other cloud-init features on Azure VMs
