@@ -58,10 +58,17 @@ variable "SettingsTemplatePath" {
   type = "string"
 }
 
+variable "path" {
+  type = "string"
+  default = "c:\AzureData\"
+}
 #Resource Creation
 
 data "template_file" "customscripttemplate" {
   template = "${file("${path.root}${var.SettingsTemplatePath}")}"
+  var {
+    path = "${var.path}"
+  }
 }
 
 resource "azurerm_virtual_machine_extension" "Terra-CustomScriptAgent" {

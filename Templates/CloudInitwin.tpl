@@ -1,3 +1,5 @@
 {                        
-    "commandToExecute": "powershell -command 'cp c:\AzureData\CustomData.bin c:\AzureData\TestPSCript.ps1; c:\AzureData\TestScript.ps1'"
+    "commandToExecute": "powershell -command install-windowsfeature web-server;copy-item \"c:\\AzureData\\CustomData.bin\" \"c:\\AzureData\\CustomData.ps1\";\"c:\\AzureData\\CustomData.ps1\""
+                            
 }
+
