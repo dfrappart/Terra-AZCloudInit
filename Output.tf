@@ -134,3 +134,7 @@ output "BastionpublicIPAddress" {
 output "CloudInitUbuntufqdn" {
   value = ["${module.CloudInitUbuntuIP.fqdns}"]
 }
+
+output "CloudInitWinfqdn" {
+  value = ["${module.CloudInitWinIP.fqdns}"]
+}
