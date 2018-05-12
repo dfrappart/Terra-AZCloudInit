@@ -13,4 +13,3 @@ terraform.tfstate
 terraform.tfstate.backup
 *.tfstate*
 .terraform/
-/home
