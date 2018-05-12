@@ -60,7 +60,7 @@ variable "SettingsTemplatePath" {
 
 variable "path" {
   type = "string"
-  default = "c:\AzureData\"
+  default = "c:\\AzureData\\"
 }
 #Resource Creation
 
