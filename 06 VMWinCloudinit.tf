@@ -1,5 +1,5 @@
 ##############################################################
-#This file creates Ubuntu VM and use cloud init script with 
+#This file creates Windows VM and copy a local script with 
 #the parameter custom_data
 ##############################################################
 
