@@ -7,8 +7,8 @@
 
 module "AllowSSHFromInternetCloudInitIn" {
   #Module source
-  #source = "./Modules/08 NSGRule"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//08 NSGRule"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//08-2 NSGRule with services tags"
 
   #Module variable
   RGName                          = "${module.ResourceGroup.Name}"
@@ -26,8 +26,8 @@ module "AllowSSHFromInternetCloudInitIn" {
 
 module "AllowHTTPFromInternetCloudInitIn" {
   #Module source
-  #source = "./Modules/08 NSGRule"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//08 NSGRule"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//08-2 NSGRule with services tags"
 
   #Module variable
   RGName                          = "${module.ResourceGroup.Name}"
@@ -48,7 +48,7 @@ module "AllowHTTPFromInternetCloudInitIn" {
 module "CloudInitPublicIP" {
   #Module source
   #source = "./Modules/10 PublicIP"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//10 PublicIP"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//10 PublicIP"
 
   #Module variables
 
@@ -65,7 +65,7 @@ module "AS_CloudInit" {
   #Module source
 
   #source = "./Modules/13 AvailabilitySet"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//13 AvailabilitySet"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//13 AvailabilitySet"
 
   #Module variables
   ASName              = "AS_CloudInit"
@@ -81,7 +81,7 @@ module "NICs_CloudInit" {
   #module source
 
   #source = "./Modules/12 NICwithPIPWithCount"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//12 NICwithPIPWithCount"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//12-1 NICwithPIPWithCount"
 
   #Module variables
 
@@ -101,7 +101,7 @@ module "DataDisks_CloudInit" {
   #Module source
 
   #source = "./Modules/06 ManagedDiskswithcount"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//06 ManagedDiskswithcount"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//11 ManagedDiskswithcount"
 
   #Module variables
 
@@ -120,7 +120,7 @@ module "DataDisks_CloudInit" {
 module "VMs_CloudInit" {
   #module source
 
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//14 LinuxVMWithCount"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//14 - 1 LinuxVMWithCount"
 
   #Module variables
 
@@ -160,21 +160,5 @@ module "CustomExtensionLinuxForCloudInit" {
   SettingsTemplatePath = "./Templates/CloudInittest.tpl"
 }
 
-/*
-module "NetworkWatcherAgentForCloudInit" {
-  #Module Location
-  #source = "./Modules/20 LinuxNetworkWatcherAgent"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//20 LinuxNetworkWatcherAgent"
 
-  #Module variables
-  AgentCount          = "1"
-  AgentName           = "NetworkWatcherAgentForCloudInit"
-  AgentLocation       = "${var.AzureRegion}"
-  AgentRG             = "${module.ResourceGroup.Name}"
-  VMName              = ["${module.VMs_CloudInit.Name}"]
-  EnvironmentTag      = "${var.EnvironmentTag}"
-  EnvironmentUsageTag = "${var.EnvironmentUsageTag}"
-}
-
-*/
 

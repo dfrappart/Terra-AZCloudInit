@@ -7,8 +7,8 @@
 
 module "AllowSSHFromInternetFEIn" {
   #Module source
-  #source = "./Modules/08 NSGRule"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//08 NSGRule"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//08-2 NSGRule with services tags"
 
   #Module variable
   RGName                          = "${module.ResourceGroup.Name}"
@@ -26,8 +26,8 @@ module "AllowSSHFromInternetFEIn" {
 
 module "AllowHTTPFromInternetFEIn" {
   #Module source
-  #source = "./Modules/08 NSGRule"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//08 NSGRule"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//08-2 NSGRule with services tags"
 
   #Module variable
   RGName                          = "${module.ResourceGroup.Name}"
@@ -45,8 +45,8 @@ module "AllowHTTPFromInternetFEIn" {
 
 module "AllowRDPFromInternetFEIn" {
   #Module source
-  #source = "./Modules/08 NSGRule"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//08 NSGRule"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//08-2 NSGRule with services tags"
 
   #Module variable
   RGName                          = "${module.ResourceGroup.Name}"
@@ -66,8 +66,8 @@ module "AllowRDPFromInternetFEIn" {
 
 module "CloudInitUbuntuIP" {
   #Module source
-  #source = "./Modules/10 PublicIP"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//10 PublicIP"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//10 PublicIP"
 
   #Module variables
   PublicIPCount       = "1"
@@ -83,8 +83,8 @@ module "CloudInitUbuntuIP" {
 module "AS_CloudInitUbuntu" {
   #Module source
 
-  #source = "./Modules/13 AvailabilitySet"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//13 AvailabilitySet"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//13 AvailabilitySet"
 
   #Module variables
   ASName              = "AS_CloudInitUbuntu"
@@ -99,8 +99,8 @@ module "AS_CloudInitUbuntu" {
 module "NICs_CloudInitUbuntu" {
   #module source
 
-  #source = "./Modules/12 NICwithPIPWithCount"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//12 NICwithPIPWithCount"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//12-1 NICwithPIPWithCount"
 
   #Module variables
 
@@ -118,8 +118,8 @@ module "NICs_CloudInitUbuntu" {
 module "DataDisks_CloudInitUbuntu" {
   #Module source
 
-  #source = "./Modules/06 ManagedDiskswithcount"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//06 ManagedDiskswithcount"
+
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//11 ManagedDiskswithcount"
 
   #Module variables
 
@@ -164,21 +164,5 @@ module "VMs_CloudInitUbuntu" {
   EnvironmentUsageTag = "${var.EnvironmentUsageTag}"
 }
 
-/*
-module "NetworkWatcherAgentForCloudInitUbuntu" {
-  #Module Location
-  #source = "./Modules/20 LinuxNetworkWatcherAgent"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//20 LinuxNetworkWatcherAgent"
 
-  #Module variables
-
-  AgentName           = "NetworkWatcherAgentForCloudInitUbuntu
-  AgentLocation       = "${var.AzureRegion}"
-  AgentRG             = "${module.ResourceGroup.Name}"
-  VMName              = ["${module.VMs_CloudInitUbuntu.Name}"]
-  EnvironmentTag      = "${var.EnvironmentTag}"
-  EnvironmentUsageTag = "${var.EnvironmentUsageTag}"
-}
-
-*/
 

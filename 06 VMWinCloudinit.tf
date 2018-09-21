@@ -9,7 +9,7 @@ module "AS_CloudInitWin" {
   #Module source
 
   #source = "./Modules/AvailabilitySet"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//13 AvailabilitySet"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//13 AvailabilitySet"
 
   #Module variables
   ASName              = "AS_CloudInitWin"
@@ -24,7 +24,7 @@ module "AS_CloudInitWin" {
 module "CloudInitWinIP" {
   #Module source
   #source = "./Modules/10 PublicIP"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//10 PublicIP"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//10 PublicIP"
 
   #Module variables
   PublicIPCount       = "1"
@@ -41,7 +41,7 @@ module "NICs_CloudInitWin" {
   #module source
 
   #source = "./Modules/12 NICwithPIPWithCount"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//12 NICwithPIPWithCount"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//12-1 NICwithPIPWithCount"
 
   #Module variables
 
@@ -60,7 +60,7 @@ module "DataDisks_CloudInitWin" {
   #Module source
 
   #source = "./Modules/06 ManagedDiskswithcount"
-  source = "github.com/dfrappart/Terra-AZBasiclinuxWithModules//Modules//06 ManagedDiskswithcount"
+  source = "github.com/dfrappart/Terra-AZModuletest//Modules//11 ManagedDiskswithcount"
 
   #Module variables
 
@@ -124,22 +124,5 @@ module "CustomExtensionWinForCloudInit" {
   SettingsTemplatePath = "./Templates/CloudInitwin.tpl"
 }
 
-#Network Watcher Agent
-/*
-module "NetworkWatcherAgentForCloudInitWin" {
-  #Module Location
-  #source = "./Modules/NetworkWatcherAgentWin"
-  source = "github.com/dfrappart/Terra-AZBasicWinWithModules//Modules//NetworkWatcherAgentWin"
 
-  #Module variables
-
-  AgentName           = "NetworkWatcherAgentForCloudInitWin"
-  AgentLocation       = "${var.AzureRegion}"
-  AgentRG             = "${module.ResourceGroup.Name}"
-  VMName              = ["${module.VMs_CloudInitWin.Name}"]
-  EnvironmentTag      = "${var.EnvironmentTag}"
-  EnvironmentUsageTag = "${var.EnvironmentUsageTag}"
-}
-
-*/
 
